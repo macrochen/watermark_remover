@@ -29,6 +29,9 @@ $(document).ready(function() {
                 // Initialize Cropper.js
                 cropper = new Cropper(image, {
                     viewMode: 1, // Restrict crop box to be within the canvas
+                    dragMode: 'move', // Allow moving the image
+                    zoomable: true,   // Allow zooming the image
+                    zoomOnWheel: true, // Allow zooming with mouse wheel
                     autoCropArea: 0.8,
                     // The 'crop' event is fired whenever the crop box is moved or resized
                     crop(event) {
@@ -76,7 +79,16 @@ $(document).ready(function() {
                 if (response.status === 'success') {
                     $('#result-box .placeholder').hide();
                     $('#result-img').attr('src', response.image).show();
-                    $('#download-link').attr('href', response.image).show();
+
+                    // Generate new filename
+                    const originalName = originalFile.name;
+                    const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+                    const newFileName = `${baseName}_processed.png`;
+
+                    $('#download-link').attr({
+                        'href': response.image,
+                        'download': newFileName
+                    }).show();
                 } else {
                     alert('Error: ' + response.message);
                 }
