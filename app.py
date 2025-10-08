@@ -51,4 +51,4 @@ def remove_watermark():
     return jsonify({'status': 'error', 'message': 'An unknown error occurred'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5002)

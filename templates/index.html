@@ -12,7 +12,11 @@
     <div class="container">
         <div class="controls">
             <input type="file" id="upload-file" accept="image/png, image/jpeg">
-            <button id="process-btn" disabled>去除水印</button>
+            <button id="process-btn">去除水印</button>
+            <button id="confirm-crop-btn" style="display: none;">确认裁剪</button>
+        </div>
+        <div class="result-options" style="display: none;">
+            <a id="try-crop-link" href="#">效果不佳？尝试手动裁剪</a>
         </div>
         <div class="image-comparison">
             <div class="image-box" id="preview-box">
@@ -27,7 +31,12 @@
                 <img id="result-img" src="" alt="Processed Image Result" style="display: none;">
             </div>
         </div>
-        <a id="download-link" href="#" style="display: none;"><button>下载处理后的图片</button></a>
+        <button id="download-btn" style="display: none;">下载处理后的图片</button>
+    </div>
+
+    <div id="image-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-image">
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
