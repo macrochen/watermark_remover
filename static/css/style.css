@@ -33,6 +33,78 @@ h1 {
     align-items: center;
 }
 
+/* Toolbar Styles */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+}
+
+.mode-switch button {
+    margin-top: 0;
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.mode-switch button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.brush-settings, .rect-settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-type-switch {
+    display: flex;
+    gap: 10px;
+}
+
+.action-type-switch label {
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.brush-settings button {
+    margin-top: 0;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    background-color: #dc3545;
+}
+.brush-settings button:hover {
+    background-color: #c82333;
+}
+
+.rect-settings label {
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+
+.coord-input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .image-comparison {
     display: flex;
     justify-content: space-around;
@@ -50,6 +122,27 @@ h1 {
     justify-content: center;
     flex-direction: column;
     position: relative; /* Important for magnifier positioning */
+}
+
+/* Adjust image container to handle canvas overlay */
+.img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#preview-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+#mask-canvas {
+    touch-action: none; /* Prevent scrolling when drawing on mobile */
+    cursor: crosshair;
+    opacity: 0.6; /* Visual transparency for the solid brush */
 }
 
 img {

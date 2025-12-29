@@ -18,12 +18,42 @@
         <div class="result-options" style="display: none;">
             <a id="try-crop-link" href="#">效果不佳？尝试手动裁剪</a>
         </div>
+        
+        <div class="toolbar" id="main-toolbar" style="display: none;">
+            <div class="mode-switch">
+                <button id="mode-brush" class="active">🖌️ 涂抹模式</button>
+                <button id="mode-rect">⛶ 框选模式</button>
+            </div>
+            
+            <div class="brush-settings" style="display: none;">
+                <div class="action-type-switch">
+                    <label><input type="radio" name="action_type" value="remove" checked> 去水印</label>
+                    <label><input type="radio" name="action_type" value="mosaic"> 打马赛克</label>
+                </div>
+                <div class="separator" style="width: 1px; height: 20px; background: #ccc; margin: 0 10px;"></div>
+                <label for="brush-size">笔刷大小:</label>
+                <input type="range" id="brush-size" min="5" max="50" value="20">
+                <button id="undo-btn">撤销</button>
+                <button id="clear-brush">清除画笔</button>
+            </div>
+            
+            <div class="rect-settings" id="rect-settings" style="display: none;">
+                <label>X: <input type="number" id="crop-x" class="coord-input"></label>
+                <label>Y: <input type="number" id="crop-y" class="coord-input"></label>
+                <label>W: <input type="number" id="crop-w" class="coord-input"></label>
+                <label>H: <input type="number" id="crop-h" class="coord-input"></label>
+            </div>
+        </div>
+
         <div class="image-comparison">
             <div class="image-box" id="preview-box">
-                <h3>原始图片</h3>
+                <h3 id="preview-title">图片预览</h3>
                 <p class="placeholder" id="instruction-text" style="display: none;">请在图片上拖拽鼠标以选择水印区域</p>
                 <span class="placeholder">请上传图片</span>
-                <img id="preview-img" src="" alt="Original Image Preview" style="display: none;">
+                <div class="img-container" style="position: relative; display: inline-block;">
+                    <img id="preview-img" src="" alt="Image Preview" style="display: none;">
+                    <canvas id="mask-canvas" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></canvas>
+                </div>
             </div>
             <div class="image-box" id="result-box">
                 <h3>处理结果</h3>
