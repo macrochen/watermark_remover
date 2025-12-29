@@ -49,6 +49,7 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative; /* Important for magnifier positioning */
 }
 
 img {
@@ -90,6 +91,21 @@ input[type="file"] {
 /* Make result image clickable */
 #result-img {
     cursor: pointer;
+}
+
+/* Magnifier Glass */
+.img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    cursor: none;
+    /* Size of the magnifier glass: */
+    width: 120px;
+    height: 120px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through to open modal */
+    display: none; /* Hidden by default */
 }
 
 /* Modal styles */
